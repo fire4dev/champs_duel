@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS users(
     id serial primary key,
     name varchar(120) not null,
     username varchar(120) unique not null,
-    crypted_pass varchar(250) not null,
+    crypted_pass varchar(300) not null,
     user_type varchar(20) not null DEFAULT 'normal',
     created_at varchar(50) not null
 );
