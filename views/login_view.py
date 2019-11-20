@@ -1,8 +1,8 @@
 import getpass 
-from champs_duel_lib.models import users_model as Users
+from models import users_model as Users
 
 def login():
-    username = input("Usuario =>  ")
+    username = input("\nUsuario =>  ")
     not_crypted_pass = getpass.getpass(prompt='Senha =>  ', stream=None) 
     
-    Users.login(username,crypted_pass,not_crypted_pass)
+    Users.login(username,not_crypted_pass)

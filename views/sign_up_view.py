@@ -1,9 +1,9 @@
 import hashlib
 import getpass 
-from champs_duel_lib.models import users_model as Users
+from models import users_model as Users
 
 def sign_up():
-    name = input("Nome =>  ")
+    name = input("\nNome =>  ")
     username = input("Usuario =>  ")
     not_crypted_pass = getpass.getpass(prompt='Senha =>  ', stream=None) 
     # encoding the password
@@ -12,11 +12,9 @@ def sign_up():
 
     user_type = 'normal'
     Users.sign_up(name,username,crypted_pass,user_type)
-
-    status='created'
     
 def sign_up_admin():
-    name = input("Nome =>  ")
+    name = input("\nNome =>  ")
     username = input("Usuario =>  ")
     not_crypted_pass = getpass.getpass(prompt='Senha =>  ', stream=None) 
     # encoding the password
@@ -25,5 +23,3 @@ def sign_up_admin():
 
     user_type = 'admin'
     Users.sign_up(name,username,crypted_pass,user_type)
-
-    status='created'

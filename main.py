@@ -5,34 +5,30 @@ import sys
 from datetime import datetime
 
 # @@ FOLDERS @@
-import login_view
-import sign_up_view
+from views import login_view
+from views import sign_up_view
+from views import design_view
 
-
-
-# some def's
-def clear():
-    print("\n"*100)
-def designMenu():
-    print("¨"*20)
-    print("Champs Duel")
-    print("¨"*20)
-    print("\n @entrar\n @cadastrar\n @campeonatos\n @sair")
 
 
 # main application
 # loop menu 
 activeApp = 1
 while activeApp == 1:
-    designMenu()
+    design_view.clear()
+    design_view.designMenu()
     commands = input("\ninforme um comando [@comando] =>  ")
     if commands == '@entrar':
         # form area
+        design_view.clear()
         login_view.login()
     if commands == '@cadastrar':
         # form area
+        design_view.clear()
         sign_up_view.sign_up()
     if commands == '@admin':
+        # form area
+        design_view.clear()
         sign_up_view.sign_up_admin()
     if commands == '@sair':
         print("\n Bye bye!!")
