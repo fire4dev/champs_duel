@@ -18,25 +18,29 @@ try:
                 id serial primary key,
                 name varchar(120) not null,
                 username varchar(120) unique not null,
-                crypted_pass varchar(100) not null,
-                user_type varchar(20) not null DEFAULT 'normal'
+                crypted_pass varchar(300) not null,
+                points integer not null,
+                victories integer not null,
+                user_type varchar(20) not null DEFAULT 'normal',
+                created_at varchar(100) not null
         );
         CREATE TABLE IF NOT EXISTS tournament(
                 id serial primary key,
-                name varchar(120) not null, 
+                name varchar(120) not null,
                 category varchar(120) not null,
                 created_by_id integer REFERENCES users(id),
-                created_at varchar(50) not null,
+                participants varchar(300) not null,
+                crypted_password varchar(50),
                 type_tournament varchar(50) not null,
                 description varchar(300) not null,
-                crypted_password varchar(50) not null
+                created_at varchar(100) not null
         );
         CREATE TABLE IF NOT EXISTS users_activities(
                 id serial primary key,
                 user_id integer REFERENCES users(id),
-                description varchar(200) not null,
-                updated_at varchar(50) not null
+                notice varchar(200) not null
         );
+
     ''')
     connection.commit()
     # Print PostgreSQL Connection properties

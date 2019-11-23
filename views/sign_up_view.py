@@ -1,5 +1,8 @@
+# @@@@@ IMPORTS @@@@@@
 import hashlib
 import getpass 
+import time
+# @@ FOLDERS @@
 from models import users_model as Users
 
 def sign_up():
@@ -12,6 +15,12 @@ def sign_up():
 
     user_type = 'normal'
     Users.sign_up(name,username,crypted_pass,user_type)
+    if Users.status == 'created':
+        print("\n conta criada com sucesso :)")
+        time.sleep(2)
+    elif Users.status == 'not_created':
+        print("\n nao foi possivel criar sua conta")
+        time.sleep(2)
     
 def sign_up_admin():
     name = input("\nNome =>  ")
@@ -23,3 +32,9 @@ def sign_up_admin():
     
     user_type = 'admin'
     Users.sign_up(name,username,crypted_pass,user_type)
+    if Users.status == 'created':
+        print("\n conta criada com sucesso :)")
+        time.sleep(2)
+    elif Users.status == 'not_created':
+        print("\n nao foi possivel criar sua conta")
+        time.sleep(2)
