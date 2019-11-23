@@ -4,7 +4,7 @@ import time
 # @@ FOLDERS @@
 from models import users_model as Users
 from models import champs_admin_model
-from views import design_view,users_view
+from views import design_view,users_view,friends_views
 import hashlib
 
 def login():
@@ -19,19 +19,34 @@ def login():
     logged = 1
     if Users.status == 'logged':
         while logged==1:
-            design_view.designLogged
+            design_view.clear()
+            design_view.designLogged()
             command = input("\ninforme um comando [@comando] =>  ") 
-            if command == '@criar':
+            if command == '@amigos':
+                friends_views.index()
+            elif command == '@criartor':
                 champs_admin_model.create_tournament()
             elif command == '@torneios':
                 tournaments.list_tournament()
             elif command == '@users':
-                users_view.index
+                design_view.clear()
+                users_view.index()
+                # go back validation
+                command = input("\ninforme um comando [@comando] =>  ") 
+                goBack(command)
+                    
             elif command == '@sair':
-                break
+                logged = 0
             else:
                 print('\n comando inválido')
                 time.sleep(2)
     elif Users.status == 'not logged':
         print("\n usuário ou senha inválidos :(")
         time.sleep(1)
+
+
+def goBack(command):
+    while command != '@voltar':
+        print('\n comando inválido')
+        time.sleep(2)
+        command = input("\ninforme um comando [@comando] =>  ") 
