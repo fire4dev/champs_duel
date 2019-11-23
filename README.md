@@ -10,6 +10,11 @@ Tasks:
 - 6 Dentro de campeonatos deve ter a lista dos jogadores já ordenados pelos pontos
 - 7 Especificar tempo do campeonato
 - 8 Ordenar em ordem alfabetica a lista de campeonatos
+- 9 Tela de adicionar amigos
+- 10 Solicitação de amizades
+- 11 Listagem de usuários para admins
+- 12 Busca por nome de usuário
+- 13 Busca por nome de campeonato 
 
 
 # OBS:
