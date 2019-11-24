@@ -27,11 +27,14 @@ def login(username,not_crypted_pass):
     if row > 0:
         bd.cursor.execute(f"SELECT user_type FROM users WHERE username='{username}'")
         user_type = bd.cursor.fetchone()[0]
+
         if user_type == 'admin':
-            design_view.designMenuADM()
+            
             logged = 1
 
             while logged == 1:
+                design_view.clear()
+                design_view.designMenuADM()
                 command = input("\ninforme um comando [@comando] =>  ") 
                 if command == '@criar':
                     champs_adm.create_tournament()

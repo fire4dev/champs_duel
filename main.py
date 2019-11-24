@@ -2,10 +2,9 @@
 import random
 import time
 import sys
-from datetime import datetime
-from models import users_model
+
 # @@ FOLDERS @@
-from views import login_view, sign_up_view, design_view,champs_adm
+from views import login_view, sign_up_view, design_view,champs_adm,tournaments
 
 # main application
 # loop menu 
@@ -32,6 +31,10 @@ while activeApp == 1:
         # form area
         design_view.clear()
         sign_up_view.sign_up_admin()
+    if commands == '@torneios':
+        design_view.clear()
+        tournaments.list_tournament()
+        time.sleep(3)
     if commands == '@sair':
         print("\n Bye bye!!")
         time.sleep(0.5)

@@ -22,5 +22,6 @@ def designMenuNORMAL():
     print("    Champs Duel             Tipo de usuario => NORMAL")
     print("¨"*20)
     print("\n @torneios\n @sair")
+
     
 

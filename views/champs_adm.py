@@ -26,7 +26,6 @@ def create_tournament():
         design_view.clear()
         design_view.designMenuADM()
     else:
-        password_tournment = input('Insira a senha do torneio => ')
     
         bd.cursor.execute("""
         INSER INTO tournament(name,category,type_tournament,description,created_at)
