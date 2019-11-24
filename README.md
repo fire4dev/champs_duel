@@ -12,7 +12,7 @@ Tasks:
 - 8 Ordenar em ordem alfabetica a lista de campeonatos
 - 9 Tela de adicionar amigos
 - 10 Solicitação de amizades
-- 11 Listagem de usuários para admins
+- 11 Listagem de usuários para admins ✓
 - 12 Busca por nome de usuário
 - 13 Busca por nome de campeonato 
 
