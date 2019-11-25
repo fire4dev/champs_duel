@@ -14,4 +14,10 @@ def index():
         user_type = users[3]
         print("  {}       {}       {}        {}".format(id,name,username,user_type))
     print("\n @voltar")
+    # go back validation
+    command = input("\ninforme um comando [@comando] =>  ") 
+    while command != '@voltar':
+        print('\n comando inválido')
+        time.sleep(2)
+        command = input("\ninforme um comando [@comando] =>  ") 
 

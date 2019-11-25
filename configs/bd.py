@@ -39,7 +39,8 @@ try:
                 id serial primary key,
                 user_id integer REFERENCES users(id),
                 solicitation_to_id integer REFERENCES users(id),
-                solicitation_status varchar(20) not null
+                solicitation_status varchar(20) not null,
+                created_at varchar(100) not null
         );
         CREATE TABLE IF NOT EXISTS users_activities(
                 id serial primary key,
