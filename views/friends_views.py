@@ -14,7 +14,7 @@ def index():
     elif Friends.status == 'have_friends':
         print("  NAME          USERNAME       USER_TYPE")
         for friend in Friends.friends():
-            print("  {}       {}          {}".format(friend[0],friend[1],friend[2]))
+            print("  {}       {}          {}".format(friend[0][0],friend[0][1],friend[0][2]))
     print("\n @adicionar\n @solicitacoes\n @voltar")
 
     # go back validation
@@ -52,7 +52,7 @@ def options_response(command):
             elif Friends.status == 'have_solicitations':
                 print("  NAME           USERNAME            USER_TYPE")
                 for solicitation in Friends.show_solicitations():
-                    print("  {}       {}               {}".format(solicitation[0],solicitation[1],solicitation[2]))
+                    print("  {}       {}               {}".format(solicitation[0][0],solicitation[0][1],solicitation[0][2]))
                 friend_accept = input("\n username para aceitar =>  ")
                 if friend_accept:
                     Friends.accept_solicitations(friend_accept)

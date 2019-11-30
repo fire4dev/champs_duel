@@ -20,25 +20,16 @@ def friends():
     row = bd.cursor.rowcount
     if row > 0:
         status = 'have_friends'
-        solicitation_to_id = bd.cursor.fetchall()[0]
-        ids_list = []
-        print(solicitation_to_id)
-        time.sleep(9999)
-        for cont in range(row):
-            the_list = "".join(map(str,solicitation_to_id[cont]))    
-            or_statment = "{}".format(int(the_list))
-            if cont+1==row:
-                or_statment = int(the_list)
-            bd.cursor.execute("SELECT name,username,user_type FROM users WHERE id=%s",(or_statment,))
-            friend_list = bd.cursor.fetchall()
-            ids_list.append(the_list)
-            cont+=1
-            print(the_list)
-            print(ids_list)
+        solicitation_to_id = bd.cursor.fetchall()
+        users_list = []
         # time.sleep(9999)
-        
-        
-        return friend_list
+        for cont in range(row):
+            the_list_id = "".join(map(str,solicitation_to_id[cont]))
+            bd.cursor.execute("SELECT name,username,user_type FROM users WHERE id=%s",(the_list_id,))
+            friend_list = bd.cursor.fetchall()
+            users_list.append(friend_list)
+            cont+=1
+        return users_list
 
         #verificar o id logado primeiro
         #depois validar se o id logado é diferente do solicitation_to_id
@@ -80,12 +71,18 @@ def show_solicitations():
     row = bd.cursor.rowcount
     if row > 0:
         status = 'have_solicitations'
-        user_id = bd.cursor.fetchone()[0]
-        bd.cursor.execute("SELECT user_id FROM users_friendships WHERE (user_id=%s and solicitation_to_id=%s) and solicitation_status = 'pending'",(user_id,user_id_logged))
-        user_id_bd = bd.cursor.fetchone()[0]
-        bd.cursor.execute("SELECT name, username, user_type FROM users WHERE id=%s",(user_id_bd,))
-        soli_list = bd.cursor.fetchall()
-        return soli_list
+        user_id = bd.cursor.fetchall()
+        users_list = []
+        for cont in range(row):
+            the_list_id = "".join(map(str,user_id[cont]))
+            bd.cursor.execute("SELECT user_id FROM users_friendships WHERE (user_id=%s and solicitation_to_id=%s) and solicitation_status = 'pending'",(the_list_id,user_id_logged))
+            user_id_bd = bd.cursor.fetchall()
+            the_list_id = "".join(map(str,user_id_bd[cont]))
+            bd.cursor.execute("SELECT name, username, user_type FROM users WHERE id=%s",(the_list_id,))
+            soli_list = bd.cursor.fetchall()
+            users_list.append(soli_list)
+            cont+=1
+        return users_list
     else:
         status = 'no_solicitations'
 
@@ -99,7 +96,7 @@ def accept_solicitations(friend_accept):
     if row > 0:
         user_id = bd.cursor.fetchone()[0]
         # know if the user especified are sending solicitation for logged user
-        bd.cursor.execute("SELECT id FROM users_friendships WHERE user_id=%s",(user_id,))
+        bd.cursor.execute("SELECT id FROM users_friendships WHERE user_id=%s and solicitation_status = 'pending'",(user_id,))
         row = bd.cursor.rowcount
         if row > 0:
             solicitation_status = 'accepted'
