@@ -3,8 +3,8 @@ import getpass
 import time
 # @@ FOLDERS @@
 from models import users_model as Users
-from models import champs_admin_model
-from views import design_view,users_view,friends_views
+from models import tournaments_model
+from views import design_view,users_view,friends_views,tournaments_view
 import hashlib
 
 def login():
@@ -28,8 +28,7 @@ def login():
                 friends_views.index()
             elif command == '@criartor':
                 design_view.clear()
-                tournaments_inputs()
-                champs_admin_model.create_tournament(name_tournament,type_tournament,category_tournament,description,password_)
+                tournaments_view.index()
             elif command == '@torneios':
                 tournaments.list_tournament()
             elif command == '@users':
@@ -44,12 +43,3 @@ def login():
         print("\n usuário ou senha inválidos :(")
         time.sleep(1)
 
-
-def tournaments_inputs():
-    global name_tournament,type_tournament,category_tournament,description,password_
-
-    name_tournament = input('Nome do torneio => ')
-    type_tournament = input('Diga o tipo de torneio que deseja criar => ')
-    category_tournament = input('Categoria do torneio => ')
-    description = input('Descrição do torneio => ')
-    password_ = input('Irá ter senha? (s/n) ')
