@@ -27,7 +27,9 @@ def login():
                 design_view.clear()
                 friends_views.index()
             elif command == '@criartor':
-                champs_admin_model.create_tournament()
+                design_view.clear()
+                tournaments_inputs()
+                champs_admin_model.create_tournament(name_tournament,type_tournament,category_tournament,description,password_)
             elif command == '@torneios':
                 tournaments.list_tournament()
             elif command == '@users':
@@ -41,3 +43,13 @@ def login():
     elif Users.status == 'not logged':
         print("\n usuário ou senha inválidos :(")
         time.sleep(1)
+
+
+def tournaments_inputs():
+    global name_tournament,type_tournament,category_tournament,description,password_
+
+    name_tournament = input('Nome do torneio => ')
+    type_tournament = input('Diga o tipo de torneio que deseja criar => ')
+    category_tournament = input('Categoria do torneio => ')
+    description = input('Descrição do torneio => ')
+    password_ = input('Irá ter senha? (s/n) ')

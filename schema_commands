@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS tournament(
     name varchar(120) not null,
     category varchar(120) not null,
     created_by_id integer REFERENCES users(id),
-    participants varchar(300) not null,
+    participants varchar(1500),
     crypted_password varchar(50),
     type_tournament varchar(50) not null,
     description varchar(300) not null,
